@@ -1,0 +1,9 @@
+#!/usr/bin/env bash
+set -euo pipefail
+DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
+if [[ -x "$DIR/.venv/bin/python" ]]; then
+  PY="$DIR/.venv/bin/python"
+else
+  PY="${PYTHON:-python3}"
+fi
+exec "$PY" "$DIR/hf_push.py" "$@"
